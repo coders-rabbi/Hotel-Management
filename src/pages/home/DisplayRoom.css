@@ -1,0 +1,25 @@
+.img-01 {
+  background-image: url(../../assets//Rooms/room-4.jpg);
+  background-size: cover;
+}
+.img-02 {
+  background-image: url(../../assets//Rooms/room-5.jpg);
+  background-size: cover;
+}
+.img-03 {
+  background-image: url(../../assets//Rooms/room-7.jpg);
+  background-size: cover;
+}
+.img-04 {
+  background-image: url(../../assets//Rooms/room-8.jpg);
+  background-size: cover;
+}
+
+.bg-01 {
+  background-image: url(../../assets//Rooms/bg-2.jpg);
+  background-size: cover;
+}
+.bg-02 {
+  background-image: url(../../assets//Rooms/bg-1.jpg);
+  background-size: cover;
+}
