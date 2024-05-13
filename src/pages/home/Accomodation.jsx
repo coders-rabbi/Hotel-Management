@@ -31,13 +31,18 @@ const Accomodation = () => {
           auctor dui. In consequat augue eu eros luctus cursus. Nullam commodo
           nunc vel purus rhoncus ultrices. Suspendisse vitae neque.
         </p>
-        <div>
-          <form action="">
+        <div className="mt-10">
+          <form className="flex items-center justify-center gap-4" action="">
             <input
-              className="text-6xl"
+              className="text-5xl border-x-2 border-y-2 px-5 py-3 "
               type="date"
               value={selectedDate.toISOString().substring(0, 10)}
               onChange={handleDateChange}
+            />
+            <input
+              className="uppercase bg-[#C19B77] w-28 h-20 py-3"
+              type="submit"
+              value="Chekc Availability"
             />
           </form>
         </div>
