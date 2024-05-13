@@ -1,0 +1,8 @@
+.heroBanner {
+  /* background-image: url(../../assets/homeImage/HeroBanner.jpg); */
+  background:linear-gradient(0deg, rgba(30, 18, 25, 0.333), rgba(22, 15, 19, 0.79)), url(../../assets/homeImage/HeroBanner.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+}
