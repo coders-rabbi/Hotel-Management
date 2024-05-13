@@ -11,7 +11,7 @@ const Accomodation = () => {
   };
 
   return (
-    <div className="max-w-screen-xl m-auto grid grid-cols-2 items-center gap-5">
+    <div className="max-w-screen-xl m-auto grid grid-cols-2 items-center gap-5 mt-28">
       <div className="relative flex">
         <img className="h-[650px] w-[600px]" src={image1} />
         <img
@@ -21,7 +21,7 @@ const Accomodation = () => {
       </div>
       <div>
         <h6 className="text-[#C19B77] text-xl mb-12">Accomodations</h6>
-        <h2 className="text-6xl text-black leading-[75px]">
+        <h2 className="text-6xl text-black leading-[75px] font-semibold">
           Welcome to the Best <br /> Hotel In the City
         </h2>
         <p className="text-[15px] leading-7 mt-5">
@@ -40,9 +40,9 @@ const Accomodation = () => {
               onChange={handleDateChange}
             />
             <input
-              className="uppercase bg-[#C19B77] w-28 h-20 py-3"
+              className="text-white tracking-wider font-bold uppercase bg-[#C19B77]  h-20 py-3 px-4"
               type="submit"
-              value="Chekc Availability"
+              value="Availability"
             />
           </form>
         </div>
