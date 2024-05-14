@@ -7,7 +7,7 @@ const ContactFomr = () => {
     setSelectedDate(new Date(event.target.value));
   };
   return (
-    <div className="contactForm-banner py-28">
+    <div className="contactForm-banner py-28 mt-24">
       <div className="max-w-screen-xl m-auto grid grid-cols-6">
         <div className="bg-01 col-span-2 flex justify-center items-center">
           <div className="text-center">
