@@ -55,3 +55,8 @@
   background-size: cover;
   background-position: center;
 }
+
+.contactForm-banner {
+  background-image: url(../../assets/Image/parallax-3.jpg);
+  /* height: 20vh; */
+}

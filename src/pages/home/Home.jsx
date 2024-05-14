@@ -1,3 +1,4 @@
+import ContactFomr from "../sharedComponents/ContactForm/ContactFomr";
 import NavBar from "../sharedComponents/navBar/NavBar";
 import Accomodation from "./Accomodation";
 import DisplayRoom from "./DisplayRoom";
@@ -18,6 +19,7 @@ const Home = () => {
       <Services />
       <MiddleBanner />
       <HotelFacilities />
+      <ContactFomr />
     </>
   );
 };
