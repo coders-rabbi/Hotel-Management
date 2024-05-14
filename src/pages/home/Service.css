@@ -1,0 +1,29 @@
+.bg-01 {
+  background-image: url(../../assets/Rooms/bg-1.jpg);
+  background-size: cover;
+  background-position: center;
+}
+.bg-02 {
+  background-image: url(../../assets/Rooms/bg-2.jpg);
+  background-size: cover;
+  background-position: center;
+}
+.bg-03 {
+  background: linear-gradient(
+      0deg,
+      rgba(30, 18, 25, 0.333),
+      rgba(30, 18, 25, 0.333)
+    ),
+    url(../../assets/services/shop-5.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.bg-04 {
+  background: linear-gradient(
+      0deg,
+      rgba(30, 18, 25, 0.333),
+      rgba(30, 18, 25, 0.333)
+    ),
+    url(../../assets/services/shop-8.jpg);
+  background-size: cover;
+}
