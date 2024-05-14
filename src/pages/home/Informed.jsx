@@ -4,7 +4,7 @@ import { FaLink, FaQuoteRight } from "react-icons/fa";
 
 const Informed = () => {
   return (
-    <div className="max-w-screen-xl m-auto mt-24">
+    <div className="max-w-screen-xl m-auto mt-24 mb-16">
       <h4 className="text-[#BF9B79] text-center">ALL NEWS</h4>
       <h1 className="text-5xl font-semibold mt-6 text-center mb-16">Stay Informed</h1>
       <div className="grid grid-cols-3 gap-5">
