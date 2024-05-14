@@ -13,3 +13,45 @@
   background-size: cover;
   background-position: center;
 }
+
+.img-01 {
+  background: linear-gradient(
+      0deg,
+      rgba(30, 18, 25, 0.333),
+      rgba(30, 18, 25, 0.333)
+    ),
+    url(../../assets/Image/shop-1.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.img-02 {
+  background: linear-gradient(
+      0deg,
+      rgba(30, 18, 25, 0.333),
+      rgba(30, 18, 25, 0.333)
+    ),
+    url(../../assets/Image/shop-5.jpg);
+  background-size: cover;
+  background-position: center;
+}
+.img-03 {
+  background: linear-gradient(
+      0deg,
+      rgba(30, 18, 25, 0.333),
+      rgba(30, 18, 25, 0.333)
+    ),
+    url(../../assets/Image/shop-8.jpg);
+  background-size: cover;
+  background-position: center;
+}
+.img-04 {
+  background: linear-gradient(
+      0deg,
+      rgba(30, 18, 25, 0.333),
+      rgba(30, 18, 25, 0.333)
+    ),
+    url(../../assets/Image/shop-9.jpg);
+  background-size: cover;
+  background-position: center;
+}

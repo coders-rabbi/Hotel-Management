@@ -2,6 +2,7 @@ import NavBar from "../sharedComponents/navBar/NavBar";
 import Accomodation from "./Accomodation";
 import DisplayRoom from "./DisplayRoom";
 import HeroSection from "./HeroSection";
+import HotelFacilities from "./HotelFacilities";
 import MiddleBanner from "./MiddleBanner";
 import Services from "./Services";
 // import TopHeader from "./TopHeader";
@@ -15,7 +16,8 @@ const Home = () => {
       <Accomodation />
       <DisplayRoom />
       <Services />
-      <MiddleBanner/>
+      <MiddleBanner />
+      <HotelFacilities />
     </>
   );
 };
