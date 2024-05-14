@@ -29,28 +29,36 @@ const HotelFacilities = () => {
 
       <div className="grid col-span-2">
         <div className="grid grid-cols-4 gap-4">
-          <div className="img-01">
-            <div>
-              <p>2000TK</p>
-              <p>Lake View</p>
+          <div className="img-01 h-60 flex justify-center items-center">
+            <div className="text-white">
+              <p className="text-2xl font-semibold text-center bg-[#BF9B79] py-1 mb-9">
+                1500TK
+              </p>
+              <p className="text-3xl font-semibold uppercase">Lake View</p>
             </div>
           </div>
-          <div className="img-02">
-            <div>
-              <p>2000TK</p>
-              <p>Small Suite</p>
+          <div className="img-02 h-60 flex justify-center items-center">
+            <div className="text-white">
+              <p className="text-2xl font-semibold text-center bg-[#BF9B79] py-1 mb-9">
+                2000TK
+              </p>
+              <p className="text-3xl font-semibold uppercase">City View</p>
             </div>
           </div>
-          <div className="img-03">
-            <div>
-              <p>2000TK</p>
-              <p>City View</p>
+          <div className="img-03 h-60 flex justify-center items-center">
+            <div className="text-white">
+              <p className="text-2xl font-semibold text-center bg-[#BF9B79] py-1 mb-9">
+                2500TK
+              </p>
+              <p className="text-3xl font-semibold uppercase">Small Suite</p>
             </div>
           </div>
-          <div className="img-04">
-            <div>
-              <p>2000TK</p>
-              <p>King Room</p>
+          <div className="img-04 h-60 flex justify-center items-center">
+            <div className="text-white">
+              <p className="text-2xl font-semibold text-center bg-[#BF9B79] py-1 mb-9">
+                3200TK
+              </p>
+              <p className="text-3xl font-semibold uppercase">King Room</p>
             </div>
           </div>
         </div>
