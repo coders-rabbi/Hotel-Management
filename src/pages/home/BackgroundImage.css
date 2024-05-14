@@ -1,0 +1,10 @@
+.middle-banner {
+  background-image: url(../../assets/homeImage/parallax-19.jpg);
+  /* height: 20vh; */
+}
+
+.bg-01 {
+  background-image: url(../../assets/Rooms/bg-1.jpg);
+  background-size: cover;
+  background-position: center;
+}
