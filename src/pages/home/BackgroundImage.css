@@ -8,3 +8,8 @@
   background-size: cover;
   background-position: center;
 }
+.bg-01 {
+  background-image: url(../../assets/Rooms/bg-2.jpg);
+  background-size: cover;
+  background-position: center;
+}
