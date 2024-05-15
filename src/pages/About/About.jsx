@@ -5,7 +5,7 @@ import image02 from "../../assets/Image/rabbi.jpg";
 const About = () => {
   return (
     <div>
-      <div className="contactPage-banner flex justify-center items-center">
+      <div className="aboutPage-banner flex justify-center items-center">
         <div>
           <h1 className="uppercase text-6xl text-white">About Us</h1>
         </div>
@@ -218,7 +218,7 @@ const About = () => {
         </div>
       </div>
 
-      <div className="contactPage-MidBanner flex justify-center items-center">
+      <div className="aboutPage-MidBanner flex justify-center items-center">
         <div>
           <h1 className="uppercase text-4xl text-white leading-[55px]">
             The Satisfaction of our <br /> Customer is our Goal
