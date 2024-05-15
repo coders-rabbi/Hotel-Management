@@ -4,7 +4,7 @@ import image2 from "../../assets/homeImage/image-2.jpg";
 
 const Accomodation = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
-  console.log(selectedDate);
+  // console.log(selectedDate);
 
   const handleDateChange = (event) => {
     setSelectedDate(new Date(event.target.value));

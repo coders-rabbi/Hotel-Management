@@ -85,3 +85,25 @@
   background-image: url(../../assets/Image/parallax-3.jpg);
   /* height: 20vh; */
 }
+.contactPage-banner {
+  background-image: linear-gradient(
+      0deg,
+      rgba(30, 18, 25, 0.333),
+      rgba(30, 18, 25, 0.333)
+    ),
+    url(../../assets/Image/parallax-10.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 50vh;
+}
+.contactPage-MidBanner {
+  background-image: linear-gradient(
+      0deg,
+      rgba(30, 18, 25, 0.333),
+      rgba(30, 18, 25, 0.333)
+    ),
+    url(../../assets/Image/parallax-12.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 50vh;
+}
