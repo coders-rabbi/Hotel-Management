@@ -88,8 +88,8 @@
 .aboutPage-banner {
   background-image: linear-gradient(
       0deg,
-      rgba(30, 18, 25, 0.333),
-      rgba(30, 18, 25, 0.333)
+      rgba(9, 9, 9, 0.572),
+      rgba(0, 0, 0, 0.333)
     ),
     url(../../assets/Image/parallax-10.jpg);
   background-size: cover;

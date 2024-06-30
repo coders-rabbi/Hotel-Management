@@ -8,7 +8,7 @@ const NavBar = () => {
         <Link to="/">Home</Link>
       </li>
       <li>
-        <Link>Room</Link>
+        <Link to="roomsList">Rooms</Link>
       </li>
       <li>
         <Link to="about">About</Link>
@@ -20,7 +20,7 @@ const NavBar = () => {
   );
 
   return (
-    <div className="navbar absolute">
+    <div className="navbar absolute bg-black">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
