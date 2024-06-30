@@ -1,5 +1,14 @@
 import React, { useState } from "react";
 import img01 from "../../assets/Image/rabbi.jpg";
+import {
+  FaFacebook,
+  FaPhone,
+  FaPhoneVolume,
+  FaTwitter,
+  FaYoutube,
+} from "react-icons/fa";
+import { FaMapLocationDot } from "react-icons/fa6";
+import { MdEmail } from "react-icons/md";
 
 const Contact = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -102,7 +111,32 @@ const Contact = () => {
         </div>
       </div>
 
-      <div></div>
+      <div className="relative">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1825.2532927444922!2d90.38130697222776!3d23.80057860751062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c7a99c6c3973%3A0xb9a4fd4199c6e4b0!2z4KaV4Kay4KeN4Kav4Ka-4KaoIOCmuOCmruCmv-CmpOCmvw!5e0!3m2!1sen!2sbd!4v1719744654056!5m2!1sen!2sbd"
+          width="100%"
+          height="450"
+          // style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+        <div className="p-8  bg-[#BF9B79] text-white absolute top-1/3 left-1/2">
+          <h1 className="text-xl font-semibold mb-2">Hotel Info</h1>
+          <div className="flex items-center gap-4 mb-2">
+            <FaMapLocationDot></FaMapLocationDot>
+            <p>Building No- 10/ka, Mirpur Rd, Dhaka</p>
+          </div>
+          <div className="flex items-center gap-4 mb-2">
+            <FaPhone></FaPhone>
+            <p>+8801303329413</p>
+          </div>
+          <div className="flex items-center gap-4">
+            <MdEmail></MdEmail>
+            <p>codersrabbi@gmail.com</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
