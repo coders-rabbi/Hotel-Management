@@ -1,0 +1,122 @@
+[
+  {
+    "room_id": "01",
+    "rating": "4.2",
+    "room_space": "50 cm",
+    "room_capacity": "2 Person",
+    "room_view": "Lake",
+    "bed_size": "1 twin bed",
+    "room_facility": "Air Condition, Bathroom, BreakFast, TV, Free Wifi, Car Parking",
+    "price": 70,
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, laudantium ipsum? Distinctio voluptatibus sed, officiis debitis deleniti at velit corporis? Id nostrum saepe fugiat eveniet delectus obcaecati magni excepturi totam, qui laborum, impedit et asperiores.",
+    "image": "https://i.ibb.co/HzdP39S/room-8.jpg"
+  },
+  {
+    "room_id": "02",
+    "rating": "5.3",
+    "room_space": "70 cm",
+    "room_capacity": "3 Person",
+    "room_view": "Garden",
+    "bed_size": "1 queen bed",
+    "room_facility": "Air Condition, Bathroom, TV, Free Wifi, Car Parking",
+    "price": 90,
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, laudantium ipsum? Distinctio voluptatibus sed, officiis debitis deleniti at velit corporis? Id nostrum saepe fugiat eveniet delectus obcaecati magni excepturi totam, qui laborum, impedit et asperiores.",
+    "image": "https://i.ibb.co/S7Z4rWP/room-7.jpg"
+  },
+  {
+    "room_id": "03",
+    "rating": "3.1",
+    "room_space": "40 cm",
+    "room_capacity": "1 Person",
+    "room_view": "City",
+    "bed_size": "1 single bed",
+    "room_facility": "Air Condition, Bathroom, TV, Free Wifi",
+    "price": 50,
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, laudantium ipsum? Distinctio voluptatibus sed, officiis debitis deleniti at velit corporis? Id nostrum saepe fugiat eveniet delectus obcaecati magni excepturi totam, qui laborum, impedit et asperiores.",
+    "image": "https://i.ibb.co/hHB5d70/room-5.jpg"
+  },
+  {
+    "room_id": "04",
+    "rating": "4.3",
+    "room_space": "60 cm",
+    "room_capacity": "2 Person",
+    "room_view": "Sea",
+    "bed_size": "1 king bed",
+    "room_facility": "Air Condition, Bathroom, BreakFast, TV, Free Wifi, Car Parking",
+    "price": 110,
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, laudantium ipsum? Distinctio voluptatibus sed, officiis debitis deleniti at velit corporis? Id nostrum saepe fugiat eveniet delectus obcaecati magni excepturi totam, qui laborum, impedit et asperiores.",
+    "image": "https://i.ibb.co/cTWY11M/room-4.jpg"
+  },
+  {
+    "room_id": "05",
+    "rating": "4.1",
+    "room_space": "55 cm",
+    "room_capacity": "2 Person",
+    "room_view": "Mountain",
+    "bed_size": "2 single beds",
+    "room_facility": "Air Condition, Bathroom, TV, Free Wifi",
+    "price": 75,
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, laudantium ipsum? Distinctio voluptatibus sed, officiis debitis deleniti at velit corporis? Id nostrum saepe fugiat eveniet delectus obcaecati magni excepturi totam, qui laborum, impedit et asperiores.",
+    "image": "https://i.ibb.co/HzdP39S/room-8.jpg"
+  },
+  {
+    "room_id": "06",
+    "rating": "5.2",
+    "room_space": "80 cm",
+    "room_capacity": "4 Person",
+    "room_view": "River",
+    "bed_size": "2 double beds",
+    "room_facility": "Air Condition, Bathroom, BreakFast, TV, Free Wifi, Car Parking",
+    "price": 130,
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, laudantium ipsum? Distinctio voluptatibus sed, officiis debitis deleniti at velit corporis? Id nostrum saepe fugiat eveniet delectus obcaecati magni excepturi totam, qui laborum, impedit et asperiores.",
+    "image": "https://i.ibb.co/S7Z4rWP/room-7.jpg"
+  },
+  {
+    "room_id": "07",
+    "rating": "3.2",
+    "room_space": "45 cm",
+    "room_capacity": "1 Person",
+    "room_view": "City",
+    "bed_size": "1 single bed",
+    "room_facility": "Air Condition, Bathroom, TV, Free Wifi, Car Parking",
+    "price": 55,
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, laudantium ipsum? Distinctio voluptatibus sed, officiis debitis deleniti at velit corporis? Id nostrum saepe fugiat eveniet delectus obcaecati magni excepturi totam, qui laborum, impedit et asperiores.",
+    "image": "https://i.ibb.co/hHB5d70/room-5.jpg"
+  },
+  {
+    "room_id": "08",
+    "rating": "4.3",
+    "room_space": "65 cm",
+    "room_capacity": "3 Person",
+    "room_view": "Forest",
+    "bed_size": "1 queen bed",
+    "room_facility": "Air Condition, Bathroom, BreakFast, TV, Free Wifi",
+    "price": 85,
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, laudantium ipsum? Distinctio voluptatibus sed, officiis debitis deleniti at velit corporis? Id nostrum saepe fugiat eveniet delectus obcaecati magni excepturi totam, qui laborum, impedit et asperiores.",
+    "image": "https://i.ibb.co/cTWY11M/room-4.jpg"
+  },
+  {
+    "room_id": "09",
+    "rating": "5.4",
+    "room_space": "90 cm",
+    "room_capacity": "4 Person",
+    "room_view": "Beach",
+    "bed_size": "2 king beds",
+    "room_facility": "Air Condition, Bathroom, BreakFast, TV, Free Wifi, Car Parking",
+    "price": 150,
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, laudantium ipsum? Distinctio voluptatibus sed, officiis debitis deleniti at velit corporis? Id nostrum saepe fugiat eveniet delectus obcaecati magni excepturi totam, qui laborum, impedit et asperiores.",
+    "image": "https://i.ibb.co/HzdP39S/room-8.jpg"
+  },
+  {
+    "room_id": "10",
+    "rating": "4.1",
+    "room_space": "50 cm",
+    "room_capacity": "2 Person",
+    "room_view": "Lake",
+    "bed_size": "1 twin bed",
+    "room_facility": "Air Condition, Bathroom, BreakFast, TV, Free Wifi, Car Parking",
+    "price": 70,
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, laudantium ipsum? Distinctio voluptatibus sed, officiis debitis deleniti at velit corporis? Id nostrum saepe fugiat eveniet delectus obcaecati magni excepturi totam, qui laborum, impedit et asperiores.",
+    "image": "https://i.ibb.co/S7Z4rWP/room-7.jpg"
+  }
+]
