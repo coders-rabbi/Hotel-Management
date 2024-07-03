@@ -5,9 +5,17 @@ import { Link } from "react-router-dom";
 // import "../home/"
 
 const RegisterPage = () => {
+  const handleRegistration = (event) => {
+    event.preventDefault();
 
-    
+    const form = event.target;
+    const name = form.name.value;
+    const phone = form.phone.value;
+    const email = form.email.value;
+    const password = form.password.value;
 
+    console.log(name, phone, email, password);
+  };
 
   return (
     <div className="LoginBg flex justify-center items-center py-28">
@@ -19,10 +27,15 @@ const RegisterPage = () => {
 
         {/* this is the form section */}
         <div className="flex items-center justify-center px-5 md:px-24">
-          <form className="text-center w-full" action="">
+          <form
+            className="text-center w-full"
+            onSubmit={handleRegistration}
+            action=""
+          >
             <div className="flex items-center">
               <input
                 type="text"
+                name="name"
                 placeholder="Enter Name"
                 className="pl-8 py-3 rounded-xl w-[100%] bg-[#F0EDFF]"
                 required
@@ -33,6 +46,7 @@ const RegisterPage = () => {
             <div className="flex items-center mt-5">
               <input
                 type="email"
+                name="email"
                 placeholder="Email"
                 className="pl-8 py-3 rounded-xl w-[100%] bg-[#F0EDFF]"
                 required
@@ -42,6 +56,7 @@ const RegisterPage = () => {
             <div className="flex items-center mt-5">
               <input
                 type="tel"
+                name="phone"
                 placeholder="Phone"
                 className="pl-8 py-3 rounded-xl w-[100%] bg-[#F0EDFF]"
                 required
@@ -51,6 +66,7 @@ const RegisterPage = () => {
             <div className="flex items-center mt-5">
               <input
                 type="password"
+                name="password"
                 placeholder="Password"
                 className="pl-8 py-3 rounded-xl w-[100%] bg-[#F0EDFF]"
                 required
@@ -77,8 +93,9 @@ const RegisterPage = () => {
         {/* Google Login and Another */}
         <div className="flex justify-center">
           <Link
-            to="login"
-            className="text-2xl font-semibold bg-[#BF9B79] px-6 py-2 rounded-md mt-4">
+            to="/login"
+            className="text-2xl font-semibold bg-[#BF9B79] px-6 py-2 rounded-md mt-4"
+          >
             Login
           </Link>
         </div>

@@ -4,6 +4,27 @@ import { Link } from "react-router-dom";
 // import "../home/"
 
 const Login = () => {
+  const handleLogin = (event) => {
+    event.preventDefault();
+
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+
+    // signIn(email, password)
+    //     .then(result => {
+    //         const loggedUser = result.user;
+    //         console.log(loggedUser);
+    //         form.reset();
+    //         setError('');
+    //         navigate(from, {replace:true})
+    //     })
+    //     .catch(error => {
+    //         setError(error.message)
+    //     });
+  };
+
   return (
     <div className="LoginBg flex justify-center items-center py-28">
       <div className="bg-[#ffffff7f] rounded-3xl w-[50%] py-20">
@@ -14,19 +35,22 @@ const Login = () => {
 
         {/* this is the form section */}
         <div className="flex items-center justify-center px-5 md:px-24">
-          <form className="text-center w-full" action="">
+          <form className="text-center w-full" onSubmit={handleLogin} action="">
             <div className="flex items-center">
               <input
                 type="email"
+                name="email"
                 placeholder="Email"
                 className="pl-8 py-3 rounded-xl w-[100%] bg-[#F0EDFF]"
                 required
               />
+
               <FaUser className="absolute ml-3" />
             </div>
             <div className="flex items-center mt-5">
               <input
                 type="password"
+                name="password"
                 placeholder="Password"
                 className="pl-8 py-3 rounded-xl w-[100%] bg-[#F0EDFF]"
                 required
@@ -44,7 +68,10 @@ const Login = () => {
         </div>
         <div className="flex items-center justify-center gap-3 mt-3">
           <p>Are You New to Hotel Relax?</p>
-          <Link to="/registration" className="text-xl text-[#fff] font-semibold">
+          <Link
+            to="/registration"
+            className="text-xl text-[#fff] font-semibold"
+          >
             Registration
           </Link>
         </div>
