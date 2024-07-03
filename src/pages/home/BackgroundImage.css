@@ -118,3 +118,10 @@
   background-position: center;
   height: 50vh;
 }
+
+.LoginBg {
+  background-image: url(../../assets/Image/loginbg.jpg);
+  background-size: cover;
+  background-position: center;
+  /* height: 50vh; */
+}
