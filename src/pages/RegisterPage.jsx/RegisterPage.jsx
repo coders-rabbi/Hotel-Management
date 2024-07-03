@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaLock, FaMailBulk, FaPhone, FaUser } from "react-icons/fa";
 import { MdMail } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../authProvider/AuthProvider";
 // import "../home/"
 
 const RegisterPage = () => {
+  const Register = useContext(AuthContext);
+
   const handleRegistration = (event) => {
     event.preventDefault();
 
@@ -14,8 +17,24 @@ const RegisterPage = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    console.log(name, phone, email, password);
+    Register(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        updateProfileData(loggedUser, name, photo);
+        console.log(loggedUser);
+        form.reset();
+      })
+      .catch((error) => console.error(error));
   };
+
+  // const updateProfileData = (user, name, phone) => {
+  //   updateProfile(user, {
+  //     displayName: name,
+  //     Phone: phone,
+  //   })
+  //     .then()
+  //     .catch((error) => console.error(error));
+  // };
 
   return (
     <div className="LoginBg flex justify-center items-center py-28">
