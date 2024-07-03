@@ -5,7 +5,7 @@ const UserHistory = () => {
   const [roomsData, setRoomsData] = useState([]);
 
   useEffect(() => {
-    fetch("data.json")
+    fetch("../../../../public/data.json")
       .then((res) => res.json())
       .then((data) => setRoomsData(data));
   }, []);
@@ -16,7 +16,7 @@ const UserHistory = () => {
     <div>
       <h2 className="text-4xl font-semibold mt-4">Your rented Room</h2>
 
-      <div className="w-full">
+      {roomsData.map((room, index) => (
         <table className="table">
           <thead>
             <td>Room Image</td>
@@ -41,7 +41,7 @@ const UserHistory = () => {
             </tr>
           </tbody>
         </table>
-      </div>
+      ))}
     </div>
   );
 };
