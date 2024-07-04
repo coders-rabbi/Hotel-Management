@@ -15,7 +15,7 @@ const auth = getAuth(app);
 export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
-  const [loggedUser, setLoggedUser] = useState("");
+  const [loggedUser, setLoggedUser] = useState();
   // console.log(loggedUser);
 
   const createUser = (email, password) => {
@@ -38,7 +38,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const logOut = () => {
-    setLoading(true);
+    // setLoading(true);
     return signOut(auth);
   };
 
@@ -57,6 +57,7 @@ const AuthProvider = ({ children }) => {
     signIn,
     googleSingIn,
     updateUserProfile,
+    loggedUser,
     logOut,
   };
 

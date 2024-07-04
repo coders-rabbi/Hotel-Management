@@ -5,7 +5,8 @@ import { AuthContext } from "../../../authProvider/AuthProvider";
 
 const NavBar = () => {
   const { loggedUser } = useContext(AuthContext);
-  // console.log(loggedUser?.displayName);
+
+  console.log(loggedUser);
   const navItems = (
     <>
       <li>
@@ -58,10 +59,17 @@ const NavBar = () => {
         <ul className="menu menu-horizontal px-1 text-2xl ">{navItems}</ul>
       </div>
       <div className="navbar-end">
-        <Link to="login" className="btn">
-          Login
-        </Link>
-        {loggedUser?.displayname}
+        {loggedUser ? (
+          <>
+            <Link to="dashboard">Dashboard</Link>
+          </>
+        ) : (
+          <>
+            <Link to="login" className="btn">
+              Login
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );
