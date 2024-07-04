@@ -1,28 +1,46 @@
-import React from "react";
-import { FaUser } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { FaGoogle, FaUser } from "react-icons/fa";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../authProvider/AuthProvider";
+import { FcGoogle } from "react-icons/fc";
 // import "../home/"
 
 const Login = () => {
+  const [signInError, setSinginError] = useState("");
+  const { signIn, googleSingIn } = useContext(AuthContext);
+
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
+
   const handleLogin = (event) => {
     event.preventDefault();
-
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
 
-    // signIn(email, password)
-    //     .then(result => {
-    //         const loggedUser = result.user;
-    //         console.log(loggedUser);
-    //         form.reset();
-    //         setError('');
-    //         navigate(from, {replace:true})
-    //     })
-    //     .catch(error => {
-    //         setError(error.message)
-    //     });
+    signIn(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        form.reset();
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        const errorMessage = error.code;
+        if (errorMessage === "auth/invalid-credential") {
+          setSinginError("Invalid Email/Passwprd");
+        }
+      });
+  };
+
+  const handleGoogleSingIn = () => {
+    googleSingIn().then(async (result) => {
+      const loggedUser = result.user;
+      console.log(userInfo);
+      navigate(from, { replace: true });
+    });
   };
 
   return (
@@ -57,6 +75,11 @@ const Login = () => {
               />
               <FaUser className="absolute ml-3" />
             </div>
+
+            <div className="flex justify-center">
+              <p className="bg-white mt-4 text-red-500 px-4">{signInError}</p>
+            </div>
+
             <div>
               <input
                 className="text-xl bg-[#bf9b79] px-6 py-2 rounded-md text-white hover:bg-[#dbb28c] hover:text-black mt-5"
@@ -85,14 +108,18 @@ const Login = () => {
         </div>
         {/* Google Login and Another */}
         <div className="sm:flex justify-center items-center gap-5 mt-5">
-          <div className="flex justify-center mb-5 sm:mb-0 ">
-            <button className="text-2xl font-semibold bg-[#BF9B79] px-6 py-2 rounded-md">
+          <div className="mb-5 sm:mb-0 ">
+            <button
+              onClick={handleGoogleSingIn}
+              className="text-2xl font-semibold bg-white px-6 py-2 rounded-md flex items-center gap-2"
+            >
+              <FcGoogle />
               Google
             </button>
           </div>
           <div className="flex justify-center">
             <button className="text-2xl font-semibold bg-[#BF9B79] px-6 py-2 rounded-md">
-              Facebook
+              FcFacebook
             </button>
           </div>
         </div>

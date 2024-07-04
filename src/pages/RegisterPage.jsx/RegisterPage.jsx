@@ -1,12 +1,18 @@
-import React, { useContext } from "react";
-import { FaLock, FaMailBulk, FaPhone, FaUser } from "react-icons/fa";
+import React, { useContext, useState } from "react";
+import { FaLock, FaPhone, FaUser } from "react-icons/fa";
 import { MdMail } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../authProvider/AuthProvider";
 // import "../home/"
 
 const RegisterPage = () => {
-  const Register = useContext(AuthContext);
+  const [registrationError, setRegistrationError] = useState("");
+
+  const { createUser, updateUserProfile } = useContext(AuthContext);
+
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/login";
 
   const handleRegistration = (event) => {
     event.preventDefault();
@@ -17,24 +23,30 @@ const RegisterPage = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    Register(email, password)
+    createUser(email, password)
       .then((result) => {
         const loggedUser = result.user;
-        updateProfileData(loggedUser, name, photo);
+        updateUserProfile(name);
         console.log(loggedUser);
         form.reset();
+        navigate(from, { replace: true });
       })
-      .catch((error) => console.error(error));
-  };
+      .catch((error) => {
+        const errorCode = error.code;
 
-  // const updateProfileData = (user, name, phone) => {
-  //   updateProfile(user, {
-  //     displayName: name,
-  //     Phone: phone,
-  //   })
-  //     .then()
-  //     .catch((error) => console.error(error));
-  // };
+        if (errorCode === "auth/weak-password") {
+          setRegistrationError(
+            "Password is too weak. Please Provide a strong password"
+          );
+        }
+
+        if (errorCode === "auth/email-already-in-use") {
+          setRegistrationError(
+            "Email is already used. please provide a new email address."
+          );
+        }
+      });
+  };
 
   return (
     <div className="LoginBg flex justify-center items-center py-28">
@@ -92,6 +104,13 @@ const RegisterPage = () => {
               />
               <FaLock className="absolute ml-3" />
             </div>
+
+            <div className="flex justify-center">
+              <p className="text-[#DE3F3F] bg-white mt-3 px-4">
+                {registrationError}
+              </p>
+            </div>
+
             <div>
               <input
                 className="text-xl bg-[#bf9b79] px-6 py-2 rounded-md text-white hover:bg-[#dbb28c] hover:text-black mt-5"

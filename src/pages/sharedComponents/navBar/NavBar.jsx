@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.png";
+import { useContext } from "react";
+import { AuthContext } from "../../../authProvider/AuthProvider";
 
 const NavBar = () => {
+  const { loggedUser } = useContext(AuthContext);
+  // console.log(loggedUser?.displayName);
   const navItems = (
     <>
       <li>
@@ -51,14 +55,13 @@ const NavBar = () => {
         </a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 text-2xl ">
-          {navItems}
-        </ul>
+        <ul className="menu menu-horizontal px-1 text-2xl ">{navItems}</ul>
       </div>
       <div className="navbar-end">
         <Link to="login" className="btn">
           Login
         </Link>
+        {loggedUser?.displayname}
       </div>
     </div>
   );
