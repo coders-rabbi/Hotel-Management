@@ -1,17 +1,11 @@
 import React, { useState } from "react";
-import { FaAddressCard, FaLock, FaPhone, FaUser } from "react-icons/fa";
+import { FaAddressCard, FaPhone, FaUser } from "react-icons/fa";
 import { MdMail } from "react-icons/md";
 
-const BookingForm = ({ isVisible, onClose }) => {
+const Rabbi = ({ isVisible, onClose }) => {
   const [selectedFromDate, setSelectedFromDate] = useState(new Date());
   const [selectedToDate, setSelectedToDate] = useState(new Date());
-
   if (!isVisible) return null;
-
-  let bookingFromDate = selectedFromDate.toDateString().substring(0, 16);
-  let bookingToDate = selectedToDate.toDateString().substring(0, 16);
-
-  //   console.log(bookingFromDate);
 
   const handleFromDataChange = (event) => {
     setSelectedFromDate(new Date(event.target.value));
@@ -26,15 +20,28 @@ const BookingForm = ({ isVisible, onClose }) => {
   };
 
   return (
-    <div className="LoginBg flex justify-center items-center py-28">
-      <div className="bg-[#ffffff7f] rounded-3xl w-[50%] py-20">
-        <h1 className="text-4xl text-center mb-6">Registration Form</h1>
-        <p className="text-xl text-center mb-5 text-black">
-          How to i get started with Hotel Relax
-        </p>
-
-        {/* this is the form section */}
-        <div className="flex items-center justify-center px-5 md:px-24">
+    <div className="fixed inset-0 bg-black  bg-opacity-25 backdrop-blur-sm flex justify-center items-center">
+      <div className=" flex flex-col">
+        <button
+          onClick={() => onClose()}
+          className="btn btn-circle btn-outline border-black text-red-500 place-self-end"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+        <div className="bg-gray-300 py-5 px-10 rounded-lg">
           <form
             className="text-center w-full"
             onSubmit={handleBooking}
@@ -122,4 +129,4 @@ const BookingForm = ({ isVisible, onClose }) => {
   );
 };
 
-export default BookingForm;
+export default Rabbi;

@@ -9,10 +9,14 @@ import {
   FaUser,
 } from "react-icons/fa";
 import useRoomsData from "../../hooks/useRoomsData";
+import BookingForm from "../sharedComponents/BookingForm/BookingForm";
+import Rabbi from "../sharedComponents/BookingForm/Rabbi";
 
 const Rooms = () => {
-  // const [roomsData, refetch] = useRoomsData();
   const [roomsData, setRoomsData] = useState([]);
+
+  // This is for booking fomr modal
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     fetch("data.json")
@@ -51,19 +55,20 @@ const Rooms = () => {
             </h3>
             <div className="flex justify-between items-center mb-4">
               <div className="flex items-center gap-2 text-2xl">
-                <FaStar></FaStar>{room.rating}
+                <FaStar></FaStar>
+                {room.rating}
               </div>
               <div className="flex items-center gap-2 text-2xl">
-                <FaUser></FaUser>{room.room_capacity}
+                <FaUser></FaUser>
+                {room.room_capacity}
               </div>
               <div className="flex items-center gap-2 text-2xl">
-                <FaBox></FaBox>{room.room_space}
+                <FaBox></FaBox>
+                {room.room_space}
               </div>
             </div>
             <hr />
-            <p className="mt-8">
-            {room.description}
-            </p>
+            <p className="mt-8">{room.description}</p>
             <div className="flex items-center justify-between mt-8">
               <div>
                 <p className="flex items-center gap-2 text-2xl mb-4">
@@ -75,9 +80,7 @@ const Rooms = () => {
               </div>
               <div className="flex gap-2">
                 <FaHandHoldingHeart className="text-2xl"></FaHandHoldingHeart>
-                <p className="max-w-40">
-                {room.room_facility}
-                </p>
+                <p className="max-w-40">{room.room_facility}</p>
               </div>
             </div>
           </div>
@@ -91,13 +94,30 @@ const Rooms = () => {
               <button className="bg-gray-200 hover:bg-gray-300 text-black text-xl font-semibold py-2">
                 View Details
               </button>
-              <button className="bg-[#BF9B79] hover:bg-[#d5b08d] text-white text-xl font-semibold py-2">
+              <button
+                onClick={() => setShowModal(true)}
+                className="bg-[#BF9B79] hover:bg-[#d5b08d] text-white text-xl font-semibold py-2"
+              >
                 Book
               </button>
             </div>
           </div>
         </div>
       ))}
+      {/* // Booking Modal For Booking Form*/}
+      {/* <BookingForm
+        // movie={movie}
+        isVisible={showModal}
+        onClose={() => setShowModal(false)}
+      ></BookingForm> */}
+
+      <BookingForm
+        // movie={movie}
+        isVisible={showModal}
+        onClose={() => setShowModal(false)}
+      ></BookingForm>
+
+      <Rabbi isVisible={showModal} onClose={() => setShowModal(false)}></Rabbi>
     </div>
   );
 };
