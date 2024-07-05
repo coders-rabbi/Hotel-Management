@@ -10,16 +10,21 @@ import {
 } from "react-icons/fa";
 import useRoomsData from "../../hooks/useRoomsData";
 import BookingForm from "../sharedComponents/BookingForm/BookingForm";
-import Rabbi from "../sharedComponents/BookingForm/Rabbi";
 
 const Rooms = () => {
   const [roomsData, setRoomsData] = useState([]);
+  const [roomId, setRoomId] = useState(null); // Initialize roomId to null
 
   // This is for booking fomr modal
   const [showModal, setShowModal] = useState(false);
 
+  const handleBookClick = (id) => {
+    setRoomId(id); // Set roomId on button click
+    setShowModal(true);
+  };
+
   useEffect(() => {
-    fetch("data.json")
+    fetch(`http://localhost:5000/rooms`)
       .then((res) => res.json())
       .then((data) => setRoomsData(data));
   }, []);
@@ -50,9 +55,7 @@ const Rooms = () => {
           </div>
 
           <div className="col-span-6">
-            <h3 className="text-2xl font-semibold mb-5">
-              Standard Single Room
-            </h3>
+            <h3 className="text-2xl font-semibold mb-5">{room.room_name}</h3>
             <div className="flex justify-between items-center mb-4">
               <div className="flex items-center gap-2 text-2xl">
                 <FaStar></FaStar>
@@ -94,8 +97,9 @@ const Rooms = () => {
               <button className="bg-gray-200 hover:bg-gray-300 text-black text-xl font-semibold py-2">
                 View Details
               </button>
+
               <button
-                onClick={() => setShowModal(true)}
+                onClick={() => handleBookClick(room.room_id)} // Pass room_id to handleBookClick
                 className="bg-[#BF9B79] hover:bg-[#d5b08d] text-white text-xl font-semibold py-2"
               >
                 Book
@@ -104,20 +108,13 @@ const Rooms = () => {
           </div>
         </div>
       ))}
-      {/* // Booking Modal For Booking Form*/}
-      {/* <BookingForm
-        // movie={movie}
-        isVisible={showModal}
-        onClose={() => setShowModal(false)}
-      ></BookingForm> */}
 
       <BookingForm
-        // movie={movie}
+        roomId={roomId}
+        roomsData={roomsData}
         isVisible={showModal}
         onClose={() => setShowModal(false)}
       ></BookingForm>
-
-      <Rabbi isVisible={showModal} onClose={() => setShowModal(false)}></Rabbi>
     </div>
   );
 };
