@@ -2,14 +2,17 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 
 const useRoomsData = () => {
-  const { data: roomData = [], refetch } = useQuery([], async () => {
-    const res = await fetch(`https://restcountries.com/v3.1/alpha/170`);
-    return res.json();
-  });
+  const [roomsData, setRoomsData] = useState([]);
 
-  return [roomData, refetch];
+  useEffect(() => {
+    fetch("data.json")
+      .then((res) => res.json())
+      .then((data) => setRoomsData(data));
+  }, []);
+
+  console.log(roomsData.image);
+
+  return roomsData;
 };
 
 export default useRoomsData;
-
-

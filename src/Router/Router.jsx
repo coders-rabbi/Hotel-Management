@@ -9,6 +9,9 @@ import RegisterPage from "../pages/RegisterPage.jsx/RegisterPage";
 import UserDashboardHome from "../dashboard/User/UserDashboardHome/UserDashboardHome";
 import DashboardLayout from "../dashboard/dashboardLayout/DashboardLayout";
 import UserHistory from "../dashboard/User/UserHistory/UserHistory";
+import Booking from "../dashboard/Admin/Booking/Booking";
+import AdminHistory from "../dashboard/Admin/History/AdminHistory";
+import ManageUsers from "../dashboard/Admin/Users/ManageUsers";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +55,18 @@ const router = createBrowserRouter([
       {
         path: "history",
         element: <UserHistory />,
+      },
+      {
+        path: "booking",
+        element: <Booking />,
+      },
+      {
+        path: "admin_history",
+        element: <AdminHistory />,
+      },
+      {
+        path: "manage_users",
+        element: <ManageUsers />,
       },
 
       // Add more routes as needed

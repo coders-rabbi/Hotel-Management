@@ -19,10 +19,19 @@ const DashboardSidebar = () => {
         </div>
 
         <li>
-          <Link to="/dashboard">Dashboard Home</Link>
+          <Link to="/dashboard">Dashboard</Link>
         </li>
         <li>
           <Link to="history">History</Link>
+        </li>
+        <li>
+          <Link to="booking">Booking</Link>
+        </li>
+        <li>
+          <Link to="admin_history">Ad_History</Link>
+        </li>
+        <li>
+          <Link to="manage_users">Manage Users</Link>
         </li>
         <li>
           <Link
