@@ -12,6 +12,7 @@ import UserHistory from "../dashboard/User/UserHistory/UserHistory";
 import Booking from "../dashboard/Admin/Booking/Booking";
 import AdminHistory from "../dashboard/Admin/History/AdminHistory";
 import ManageUsers from "../dashboard/Admin/Users/ManageUsers";
+import BookingForm from "../pages/sharedComponents/BookingForm/BookingForm";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: "/registration",
         element: <RegisterPage />,
+      },
+      {
+        path: "test",
+        element: <BookingForm />,
       },
     ],
   },
