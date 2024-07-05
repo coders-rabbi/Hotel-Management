@@ -23,9 +23,7 @@ const AdminHistory = () => {
             <td>Rooms</td>
             <td>Check-in/Out-date</td>
             <td>Total</td>
-            <td>Info</td>
-            <td>Confirm</td>
-            <td>Invoice</td>
+            <td>Status</td>
           </thead>
           <tbody>
             <tr>
@@ -39,9 +37,7 @@ const AdminHistory = () => {
                 22-02-2022
               </td>
               <td>{room.price} $</td>
-              <td>Info</td>
               <td>Confirm</td>
-              <td>Invoice</td>
             </tr>
           </tbody>
         </table>

@@ -24,7 +24,7 @@ const Booking = () => {
             <td>Check-in/Out-date</td>
             <td>Total</td>
             <td>Info</td>
-            <td>Confirm</td>
+            <td>Status</td>
             <td>Invoice</td>
           </thead>
           <tbody>
