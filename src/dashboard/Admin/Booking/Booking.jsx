@@ -39,9 +39,15 @@ const Booking = () => {
                 22-02-2022
               </td>
               <td>{room.price} $</td>
-              <td>Info</td>
-              <td>Confirm</td>
-              <td>Invoice</td>
+              <td>
+                <button className="btn btn-success">Info</button>
+              </td>
+              <td>
+                <button className="btn btn-error">Confirm</button>
+              </td>
+              <td>
+                <button className="btn btn-primary">Invoice</button>
+              </td>
             </tr>
           </tbody>
         </table>
