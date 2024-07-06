@@ -3,10 +3,11 @@ import { FaLock, FaPhone, FaUser } from "react-icons/fa";
 import { MdMail } from "react-icons/md";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../authProvider/AuthProvider";
-// import "../home/"
+import { ToastContainer } from "react-toastify";
+import Swal from "sweetalert2";
 
 const RegisterPage = () => {
-  const [registrationError, setRegistrationError] = useState("");
+  // const [registrationError, setRegistrationError] = useState("");
 
   const { createUser, updateUserProfile } = useContext(AuthContext);
 
@@ -23,29 +24,45 @@ const RegisterPage = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    createUser(email, password)
-      .then((result) => {
-        const loggedUser = result.user;
-        updateUserProfile(name);
-        console.log(loggedUser);
-        form.reset();
-        navigate(from, { replace: true });
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-
-        if (errorCode === "auth/weak-password") {
-          setRegistrationError(
-            "Password is too weak. Please Provide a strong password"
-          );
-        }
-
-        if (errorCode === "auth/email-already-in-use") {
-          setRegistrationError(
-            "Email is already used. please provide a new email address."
-          );
-        }
+    createUser(email, password).then((result) => {
+      const loggedUser = result.user;
+      updateUserProfile(name).then(() => {
+        const userInfo = {
+          userName: name,
+          userEmail: email,
+          phone: phone,
+          role: "user",
+        };
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(userInfo),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.insertedId) {
+              form.reset();
+              Swal.fire({
+                icon: "success",
+                title: "Successfully Created Account",
+                text: "Got to login page!",
+              });
+              navigate("/");
+            }
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: { errorCode },
+            });
+          });
       });
+    });
   };
 
   return (
@@ -107,7 +124,7 @@ const RegisterPage = () => {
 
             <div className="flex justify-center">
               <p className="text-[#DE3F3F] bg-white mt-3 px-4">
-                {registrationError}
+                {/* {registrationError} */}
               </p>
             </div>
 
@@ -138,6 +155,7 @@ const RegisterPage = () => {
           </Link>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

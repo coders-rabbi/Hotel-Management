@@ -45,7 +45,7 @@ const Login = () => {
 
   return (
     <div className="LoginBg flex justify-center items-center py-28">
-      <div className="bg-[#ffffff7f] rounded-3xl w-[50%] py-20">
+      <div className="bg-[#ffffff9d] rounded-3xl w-[50%] py-20">
         <h1 className="text-4xl text-center mb-6">Login</h1>
         <p className="text-xl text-center mb-5 text-black">
           How to i get started with Hotel Relax
@@ -89,25 +89,16 @@ const Login = () => {
             </div>
           </form>
         </div>
-        <div className="flex items-center justify-center gap-3 mt-3">
-          <p>Are You New to Hotel Relax?</p>
-          <Link
-            to="/registration"
-            className="text-xl text-[#fff] font-semibold"
-          >
-            Registration
-          </Link>
-        </div>
 
         <div className="grid grid-cols-3 justify-center items-center mt-8">
           <hr className="border-black" />
           <p className="text-xl text-black text-center font-bold">
-            Login <span className="font-normal">with Others</span>
+            I Don't <span className="font-normal">Have Acoount</span>
           </p>
           <hr className="border-gray-950" />
         </div>
         {/* Google Login and Another */}
-        <div className="sm:flex justify-center items-center gap-5 mt-5">
+        {/* <div className="sm:flex justify-center items-center gap-5 mt-5">
           <div className="mb-5 sm:mb-0 ">
             <button
               onClick={handleGoogleSingIn}
@@ -122,6 +113,15 @@ const Login = () => {
               FcFacebook
             </button>
           </div>
+        </div> */}
+        <div className="flex items-center justify-center gap-3 mt-3">
+          <p className="text-black">Are You New to Hotel Relax?</p>
+          <Link
+            to="/registration"
+            className="text-xl text-[#fff] font-semibold"
+          >
+            Registration
+          </Link>
         </div>
       </div>
     </div>
