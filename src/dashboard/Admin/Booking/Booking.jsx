@@ -3,8 +3,12 @@ import React, { useEffect, useState } from "react";
 const Booking = () => {
   const [roomsData, setRoomsData] = useState([]);
 
+  const booking = roomsData.filter(
+    (room) => room.status !== "Checked-Out" && room.status !== "Canceled"
+  );
+
   useEffect(() => {
-    fetch("../../../../public/data.json")
+    fetch("http://localhost:5000/bookings")
       .then((res) => res.json())
       .then((data) => setRoomsData(data));
   }, []);
@@ -15,14 +19,13 @@ const Booking = () => {
     <div>
       <h2 className="text-4xl font-semibold mt-4">Your rented Room</h2>
 
-      {roomsData.map((room, index) => (
+      {booking.map((room, index) => (
         <table className="table">
           <thead>
             <td>Room Image</td>
             <td>Room Type</td>
-            <td>Rooms</td>
             <td>Check-in/Out-date</td>
-            <td>Total</td>
+            <td>Amount</td>
             <td>Info</td>
             <td>Status</td>
             <td>Invoice</td>
@@ -32,18 +35,17 @@ const Booking = () => {
               <td>
                 <img className="w-24 h-16" src={room.image} alt="" />
               </td>
-              <td>Hotel Relax</td>
-              <td>2</td>
+              <td>{room.room_name}</td>
               <td>
-                22-02-2022 <br />
-                22-02-2022
+                {room.from} <br />
+                {room.to}
               </td>
               <td>{room.price} $</td>
               <td>
                 <button className="btn btn-success">Info</button>
               </td>
               <td>
-                <button className="btn btn-error">Confirm</button>
+                <button className="btn btn-error">{room.status}</button>
               </td>
               <td>
                 <button className="btn btn-primary">Invoice</button>
