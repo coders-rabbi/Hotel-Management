@@ -2,53 +2,67 @@ import React, { useEffect, useState } from "react";
 import demoImg from "../../../assets/Rooms/room-5.jpg";
 
 const UserDashboardHome = () => {
-  const [roomsData, setRoomsData] = useState([]);
+  const [bookingData, setBookingData] = useState([]);
+  const booking = bookingData.filter(
+    (room) => room.status !== "Checked-Out" && room.status !== "Canceled"
+  );
 
   useEffect(() => {
-    fetch("data.json")
+    fetch("http://localhost:5000/bookings")
       .then((res) => res.json())
-      .then((data) => setRoomsData(data));
+      .then((data) => setBookingData(data));
   }, []);
-
-  console.log(roomsData);
 
   return (
     <div className="mt-4">
       <h2 className="text-4xl font-semibold">Your rented Room</h2>
 
-      {
-        roomsData.map((room, index) => (
-          <div className="border mt-10 flex justify-center items-center gap-8 py-5">
-        <div>
-          <img className="w-72" src={room.image} alt="" />
-        </div>
-
-        <div>
-          <h3 className="text-3xl font-semibold mb-3">Standard Single Room</h3>
-          <h4 className="text-xl font-semibold">2 Days & 1 Night</h4>
-          <p className="text-xl font-semibold mt-3">Bill: 120$</p>
-          <div className="flex items-center gap-8 mt-3">
-            <p className="text-xl font-semibold">From: 22 May</p>
-            <p className="text-xl font-semibold">To: 24 May</p>
+      {booking.map((room, index) => (
+        <div className="border mt-10 flex justify-center items-center gap-8 py-5">
+          <div>
+            <img className="w-72" src={room.image} alt="" />
           </div>
-          <div className="sm:flex items-center gap-5 mt-5">
-            <div className="flex justify-center mb-5 sm:mb-0 ">
-              <button className="text-2xl font-semibold bg-[#BF9B79] px-6 py-2 rounded-md">
-                Cancel
-              </button>
+
+          <div>
+            <h3 className="text-3xl font-semibold mb-3">{room.room_name}</h3>
+            <h4 className="text-xl font-semibold">2 Days & 1 Night</h4>
+            <p className="text-xl font-semibold mt-3">Bill: {room.price} $</p>
+            <div className="flex items-center gap-8 mt-3">
+              <p className="text-xl font-semibold">
+                From: <span className="text-sm">{room.from}</span>
+              </p>
+              <p className="text-xl font-semibold">
+                To: <span className="text-sm">{room.to}</span>
+              </p>
             </div>
-            <div className="flex justify-center">
-              <button className="text-2xl font-semibold bg-[#BF9B79] px-6 py-2 rounded-md">
-                Due
-              </button>
+            <p className="text-xl font-semibold mt-4">
+              Status: <span className="font-normal">{room.status}</span>
+            </p>
+            <div className="mt-4">
+              {room.status === "Pending" ? (
+                <>
+                  <button className="btn btn-error">Cancel</button>
+                </>
+              ) : (
+                <>
+                  <button className="btn btn-active btn-secondary">
+                    Invoice
+                  </button>
+                </>
+              )}
             </div>
+
+            {/* <div className="sm:flex items-center gap-5 mt-5">
+              <div className="flex justify-center mb-5 sm:mb-0 ">
+                <button className="btn btn-accent">{room.status}</button>
+              </div>
+              <div className="flex justify-center">
+                
+              </div>
+            </div> */}
           </div>
         </div>
-      </div>
-        ))
-      }
-
-      
+      ))}
     </div>
   );
 };

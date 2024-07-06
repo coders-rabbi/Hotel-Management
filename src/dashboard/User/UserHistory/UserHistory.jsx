@@ -4,6 +4,13 @@ import demoImg from "../../../assets/Rooms/room-5.jpg";
 const UserHistory = () => {
   const [bookings, setBookingsData] = useState([]);
 
+  const booking = bookings.filter(
+    (room) =>
+      room.status !== "Checked-In" &&
+      room.status !== "Confirmed" &&
+      room.status !== "Pending"
+  );
+
   useEffect(() => {
     fetch("http://localhost:5000/bookings")
       .then((res) => res.json())
@@ -16,7 +23,7 @@ const UserHistory = () => {
     <div>
       <h2 className="text-4xl font-semibold mt-4">Your rented Room</h2>
 
-      {bookings.map((room, index) => (
+      {booking.map((room, index) => (
         <table className="table">
           <thead>
             <td>Room Image</td>
