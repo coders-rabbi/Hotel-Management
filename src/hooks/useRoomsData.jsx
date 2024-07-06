@@ -2,17 +2,13 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 
 const useRoomsData = () => {
-  const [roomsData, setRoomsData] = useState([]);
-
-  useEffect(() => {
-    fetch("data.json")
-      .then((res) => res.json())
-      .then((data) => setRoomsData(data));
-  }, []);
-
-  console.log(roomsData.image);
-
-  return roomsData;
+  const { data: classes = [], refetch } = useQuery(["classes"], async () => {
+    const res = await fetch(
+      "https://art-in-motion-server-coders-rabbi.vercel.app/classes"
+    );
+    return res.json();
+  });
+  return [classes, refetch];
 };
 
 export default useRoomsData;

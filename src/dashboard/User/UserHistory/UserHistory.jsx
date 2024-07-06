@@ -2,42 +2,45 @@ import React, { useEffect, useState } from "react";
 import demoImg from "../../../assets/Rooms/room-5.jpg";
 
 const UserHistory = () => {
-  const [roomsData, setRoomsData] = useState([]);
+  const [bookings, setBookingsData] = useState([]);
 
   useEffect(() => {
-    fetch("../../../../public/data.json")
+    fetch("http://localhost:5000/bookings")
       .then((res) => res.json())
-      .then((data) => setRoomsData(data));
+      .then((data) => setBookingsData(data));
   }, []);
 
-  console.log(roomsData);
+  console.log(bookings);
 
   return (
     <div>
       <h2 className="text-4xl font-semibold mt-4">Your rented Room</h2>
 
-      {roomsData.map((room, index) => (
+      {bookings.map((room, index) => (
         <table className="table">
           <thead>
             <td>Room Image</td>
-            <td>Hotel Name</td>
-            <td>Room Capacity</td>
-            <td>Rooms</td>
-            <td>Check-in-date</td>
-            <td>Check-out-date</td>
+            <td>Room Type</td>
+            <td>User Name</td>
+            <td>NID</td>
+            <td>Check-in/out</td>
+            <td>Amount</td>
             <td>Total</td>
           </thead>
           <tbody>
             <tr>
               <td>
-                <img className="w-24 h-16" src={demoImg} alt="" />
+                <img className="w-24 h-16" src={room.image} alt="" />
               </td>
-              <td>Hotel Relax</td>
-              <td>1 tiwn Bed</td>
-              <td>2</td>
-              <td>22-02-2022</td>
-              <td>22-02-2022</td>
-              <td>175 $</td>
+              <td>{room.room_name}</td>
+              <td>{room.user_name}</td>
+              <td>{room.nid}</td>
+              <td>
+                {room.from} <br />
+                {room.to}
+              </td>
+              <td>{room.price} $</td>
+              <td>{room.status}</td>
             </tr>
           </tbody>
         </table>

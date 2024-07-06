@@ -39,6 +39,8 @@ const BookingForm = ({ isVisible, onClose, roomId, roomsData }) => {
     const phone = form.elements.phone.value;
     const nid = form.elements.NID.value;
     const price = room?.price;
+    const image = room?.image;
+    const status = "Pending";
 
     const bookingData = {
       room_id: room_id,
@@ -50,6 +52,8 @@ const BookingForm = ({ isVisible, onClose, roomId, roomsData }) => {
       price: price,
       from: fromDate,
       to: toDate,
+      status: status,
+      image: image,
     };
 
     fetch("http://localhost:5000/booking", {
