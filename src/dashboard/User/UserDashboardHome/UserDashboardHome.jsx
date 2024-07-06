@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import demoImg from "../../../assets/Rooms/room-5.jpg";
+import Swal from "sweetalert2";
+import { ToastContainer } from "react-toastify";
 
 const UserDashboardHome = () => {
   const [bookingData, setBookingData] = useState([]);
@@ -12,6 +14,29 @@ const UserDashboardHome = () => {
       .then((res) => res.json())
       .then((data) => setBookingData(data));
   }, []);
+
+  const handleStatusUpdate = (status, id) => {
+    console.log(status, id);
+    const statusUpdate = { status };
+
+    fetch(`http://localhost:5000/bookings/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(statusUpdate),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          Swal.fire({
+            title: "Canceled!",
+            text: "Your Booking has been Canceled",
+            icon: "success",
+            confirmButtonText: "Ok",
+          });
+        }
+        refetch();
+      });
+  };
 
   return (
     <div className="mt-4">
@@ -41,7 +66,12 @@ const UserDashboardHome = () => {
             <div className="mt-4">
               {room.status === "Pending" ? (
                 <>
-                  <button className="btn btn-error">Cancel</button>
+                  <button
+                    onClick={() => handleStatusUpdate("Canceled", room._id)}
+                    className="btn btn-error"
+                  >
+                    Cancel
+                  </button>
                 </>
               ) : (
                 <>
@@ -63,6 +93,7 @@ const UserDashboardHome = () => {
           </div>
         </div>
       ))}
+      <ToastContainer />
     </div>
   );
 };

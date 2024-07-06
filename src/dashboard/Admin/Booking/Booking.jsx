@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { ToastContainer } from "react-toastify";
+import Swal from "sweetalert2";
 
 const Booking = () => {
   const [roomsData, setRoomsData] = useState([]);
@@ -14,6 +16,29 @@ const Booking = () => {
   }, []);
 
   console.log(roomsData);
+
+  const handleStatusUpdate = (status, id) => {
+    console.log(status, id);
+    const statusUpdate = { status };
+
+    fetch(`http://localhost:5000/bookings/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(statusUpdate),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          Swal.fire({
+            title: "Update!",
+            text: "Status update successfully",
+            icon: "success",
+            confirmButtonText: "Ok",
+          });
+        }
+        refetch();
+      });
+  };
 
   return (
     <div>
@@ -45,7 +70,42 @@ const Booking = () => {
                 <button className="btn btn-success">Info</button>
               </td>
               <td>
-                <button className="btn btn-error">{room.status}</button>
+                {/* <button className="btn btn-error">{room.status}</button> */}
+                <div className="dropdown dropdown-bottom text-black">
+                  <label tabIndex={0} className="">
+                    <button className="btn btn-error">{room.status}</button>
+                  </label>
+                  <ul
+                    tabIndex={0}
+                    className="dropdown-content z-[1] menu p-2 shadow bg-base-100  w-48"
+                  >
+                    <li onClick={() => handleStatusUpdate("Pending", room._id)}>
+                      <a>Pending</a>
+                    </li>
+                    <li
+                      onClick={() => handleStatusUpdate("Confirmed", room._id)}
+                    >
+                      <a>Confirmed</a>
+                    </li>
+                    <li
+                      onClick={() => handleStatusUpdate("Canceled", room._id)}
+                    >
+                      <a>Canceled</a>
+                    </li>
+                    <li
+                      onClick={() => handleStatusUpdate("Checked-In", room._id)}
+                    >
+                      <a>Checked-In</a>
+                    </li>
+                    <li
+                      onClick={() =>
+                        handleStatusUpdate("Checked-Out", room._id)
+                      }
+                    >
+                      <a>Checked-Out</a>
+                    </li>
+                  </ul>
+                </div>
               </td>
               <td>
                 <button className="btn btn-primary">Invoice</button>
@@ -54,6 +114,7 @@ const Booking = () => {
           </tbody>
         </table>
       ))}
+      <ToastContainer />
     </div>
   );
 };
