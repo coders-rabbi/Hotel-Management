@@ -1,11 +1,24 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaAddressCard, FaPhone, FaUser } from "react-icons/fa";
 import { MdMail } from "react-icons/md";
+import { AuthContext } from "../../../authProvider/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Swal from "sweetalert2";
 
 const BookingForm = ({ isVisible, onClose, roomId, roomsData }) => {
   const [selectedFromDate, setSelectedFromDate] = useState(new Date());
   const [selectedToDate, setSelectedToDate] = useState(new Date());
   if (!isVisible) return null;
+
+  const fromDate = selectedFromDate.toISOString().substring(0, 10);
+  const toDate = selectedToDate.toISOString().substring(0, 10);
+
+  // console.log(fromDate);
+
+  const { loggedUser } = useContext(AuthContext);
+
+  const room = roomsData?.filter((room) => room.room_id === roomId)[0];
 
   const handleFromDataChange = (event) => {
     setSelectedFromDate(new Date(event.target.value));
@@ -17,9 +30,45 @@ const BookingForm = ({ isVisible, onClose, roomId, roomsData }) => {
 
   const handleBooking = (event) => {
     event.preventDefault();
-  };
+    const form = event.target;
+    // const user_name = form.value.name;
+    const room_id = room?.room_id;
+    const user_name = form.elements.name.value;
+    const room_name = room?.room_name;
+    const email = form.elements.email.value;
+    const phone = form.elements.phone.value;
+    const nid = form.elements.NID.value;
+    const price = room?.price;
 
-  const room = roomsData?.filter((room) => room.room_id === roomId)[0];
+    const bookingData = {
+      room_id: room_id,
+      user_name: user_name,
+      room_name: room_name,
+      email: email,
+      phone: phone,
+      nid: nid,
+      price: price,
+      from: fromDate,
+      to: toDate,
+    };
+
+    fetch("http://localhost:5000/booking", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(bookingData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        Swal.fire({
+          title: "Booking Confirmed",
+          text: "Welcome to the Hotel Relax",
+          icon: "success",
+        });
+        form.reset();
+      });
+  };
 
   return (
     <div className="fixed inset-0 bg-black  bg-opacity-25 backdrop-blur-sm flex justify-center items-center">
@@ -57,6 +106,7 @@ const BookingForm = ({ isVisible, onClose, roomId, roomsData }) => {
                 <input
                   type="text"
                   name="name"
+                  defaultValue={loggedUser?.displayName}
                   placeholder="Enter Name"
                   className="pl-8 py-3 rounded-xl w-[100%] bg-[#F0EDFF]"
                   required
@@ -68,6 +118,7 @@ const BookingForm = ({ isVisible, onClose, roomId, roomsData }) => {
                 <input
                   type="email"
                   name="email"
+                  value={loggedUser?.email}
                   placeholder="Email"
                   className="pl-8 py-3 rounded-xl w-[100%] bg-[#F0EDFF]"
                   required
@@ -107,6 +158,7 @@ const BookingForm = ({ isVisible, onClose, roomId, roomsData }) => {
                   type="date"
                   value={selectedFromDate.toISOString().substring(0, 10)}
                   onChange={handleFromDataChange}
+                  required
                 />
               </div>
               <div className="mt-5">
@@ -116,6 +168,7 @@ const BookingForm = ({ isVisible, onClose, roomId, roomsData }) => {
                   type="date"
                   value={selectedToDate.toISOString().substring(0, 10)}
                   onChange={handleToDataChange}
+                  required
                 />
               </div>
             </div>
@@ -130,6 +183,7 @@ const BookingForm = ({ isVisible, onClose, roomId, roomsData }) => {
           </form>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
