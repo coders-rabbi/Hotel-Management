@@ -12,7 +12,7 @@ import UserHistory from "../dashboard/User/UserHistory/UserHistory";
 import Booking from "../dashboard/Admin/Booking/Booking";
 import AdminHistory from "../dashboard/Admin/History/AdminHistory";
 import ManageUsers from "../dashboard/Admin/Users/ManageUsers";
-import BookingForm from "../pages/sharedComponents/BookingForm/BookingForm";
+import Invoice from "../pages/sharedComponents/Invoice/Invoice";
 
 const router = createBrowserRouter([
   {
@@ -45,7 +45,7 @@ const router = createBrowserRouter([
       },
       {
         path: "test",
-        element: <BookingForm />,
+        element: <Invoice />,
       },
     ],
   },

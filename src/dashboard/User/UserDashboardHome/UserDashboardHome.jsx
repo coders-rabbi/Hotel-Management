@@ -2,9 +2,18 @@ import React, { useEffect, useState } from "react";
 import demoImg from "../../../assets/Rooms/room-5.jpg";
 import Swal from "sweetalert2";
 import { ToastContainer } from "react-toastify";
+import Invoice from "../../../pages/sharedComponents/Invoice/Invoice";
 
 const UserDashboardHome = () => {
   const [bookingData, setBookingData] = useState([]);
+  const [roomId, setRoomId] = useState(null);
+
+  const [showModal, setShowModal] = useState(false);
+  const handleBookClick = (id) => {
+    setRoomId(id); // Set roomId on button click
+    setShowModal(true);
+  };
+
   const booking = bookingData.filter(
     (room) => room.status !== "Checked-Out" && room.status !== "Canceled"
   );
@@ -75,7 +84,10 @@ const UserDashboardHome = () => {
                 </>
               ) : (
                 <>
-                  <button className="btn btn-active btn-secondary">
+                  <button
+                    onClick={() => handleBookClick(room.room_id)}
+                    className="btn btn-active btn-secondary"
+                  >
                     Invoice
                   </button>
                 </>
@@ -93,7 +105,12 @@ const UserDashboardHome = () => {
           </div>
         </div>
       ))}
-      <ToastContainer />
+      <Invoice
+        bookingData={bookingData}
+        roomId={roomId}
+        isVisible={showModal}
+        onClose={() => setShowModal(false)}
+      ></Invoice>
     </div>
   );
 };
