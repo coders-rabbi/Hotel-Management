@@ -1,10 +1,19 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../authProvider/AuthProvider";
 import { FaUserTie } from "react-icons/fa";
 
 const DashboardSidebar = () => {
+  const [userData, setUserData] = useState();
   const { logOut, loggedUser } = useContext(AuthContext);
+
+  const role = userData?.role;
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/users/${loggedUser?.email}`)
+      .then((res) => res.json())
+      .then((data) => setUserData(data));
+  }, []);
 
   return (
     <div className="h-full">
@@ -18,21 +27,29 @@ const DashboardSidebar = () => {
           </p>
         </div>
 
-        <li>
-          <Link to="/dashboard">Dashboard</Link>
-        </li>
-        <li>
-          <Link to="history">History</Link>
-        </li>
-        <li>
-          <Link to="booking">Booking</Link>
-        </li>
-        <li>
-          <Link to="admin_history">Ad_History</Link>
-        </li>
-        <li>
-          <Link to="manage_users">Manage Users</Link>
-        </li>
+        {role === "user" ? (
+          <>
+            <li>
+              <Link to="/dashboard">Dashboard</Link>
+            </li>
+            <li>
+              <Link to="history">History</Link>
+            </li>
+          </>
+        ) : (
+          <>
+            <li>
+              <Link to="booking">Booking</Link>
+            </li>
+            <li>
+              <Link to="admin_history">Ad_History</Link>
+            </li>
+            <li>
+              <Link to="manage_users">Manage Users</Link>
+            </li>
+          </>
+        )}
+
         <li>
           <Link
             onClick={() => {
