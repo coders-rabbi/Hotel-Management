@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import demoImg from "../../../assets/Rooms/room-5.jpg";
 import Swal from "sweetalert2";
 import { ToastContainer } from "react-toastify";
 import Invoice from "../../../pages/sharedComponents/Invoice/Invoice";
+import { AuthContext } from "../../../authProvider/AuthProvider";
 
 const UserDashboardHome = () => {
   const [bookingData, setBookingData] = useState([]);
   const [roomId, setRoomId] = useState(null);
+
+  const { loggedUser } = useContext(AuthContext);
 
   const [showModal, setShowModal] = useState(false);
   const handleBookClick = (id) => {
@@ -19,7 +22,7 @@ const UserDashboardHome = () => {
   );
 
   useEffect(() => {
-    fetch("http://localhost:5000/bookings")
+    fetch(`http://localhost:5000/bookings/${loggedUser?.email}`)
       .then((res) => res.json())
       .then((data) => setBookingData(data));
   }, []);

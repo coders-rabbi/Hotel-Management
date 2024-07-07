@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import demoImg from "../../../assets/Rooms/room-5.jpg";
+import { AuthContext } from "../../../authProvider/AuthProvider";
 
 const UserHistory = () => {
   const [bookings, setBookingsData] = useState([]);
+  const { loggedUser } = useContext(AuthContext);
 
   const booking = bookings.filter(
     (room) =>
@@ -12,7 +14,7 @@ const UserHistory = () => {
   );
 
   useEffect(() => {
-    fetch("http://localhost:5000/bookings")
+    fetch(`http://localhost:5000/bookings/${loggedUser?.email}`)
       .then((res) => res.json())
       .then((data) => setBookingsData(data));
   }, []);

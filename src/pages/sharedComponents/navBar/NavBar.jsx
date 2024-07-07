@@ -25,7 +25,7 @@ const NavBar = () => {
   );
 
   return (
-    <div className="navbar">
+    <div className="navbar absolute">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -56,7 +56,7 @@ const NavBar = () => {
         </a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 text-2xl ">{navItems}</ul>
+        <ul className="menu menu-horizontal px-1 text-2xl text-white">{navItems}</ul>
       </div>
       <div className="navbar-end">
         {loggedUser ? (
