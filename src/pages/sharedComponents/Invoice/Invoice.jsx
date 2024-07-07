@@ -75,7 +75,6 @@ const Invoice = ({ isVisible, onClose, bookingData, roomId }) => {
           </div>
         </div>
       </div>
-      <ToastContainer />
     </div>
   );
 };

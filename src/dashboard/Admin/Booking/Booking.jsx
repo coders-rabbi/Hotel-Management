@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import Swal from "sweetalert2";
+import Invoice from "../../../pages/sharedComponents/Invoice/Invoice";
 
 const Booking = () => {
   const [roomsData, setRoomsData] = useState([]);
+
+  const [roomId, setRoomId] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const handleBookClick = (id) => {
+    setRoomId(id); // Set roomId on button click
+    setShowModal(true);
+  };
 
   const booking = roomsData.filter(
     (room) => room.status !== "Checked-Out" && room.status !== "Canceled"
@@ -108,13 +116,24 @@ const Booking = () => {
                 </div>
               </td>
               <td>
-                <button className="btn btn-primary">Invoice</button>
+                <button
+                  onClick={() => handleBookClick(room.room_id)}
+                  className="btn btn-primary"
+                >
+                  Invoice
+                </button>
               </td>
             </tr>
           </tbody>
         </table>
       ))}
       <ToastContainer />
+      <Invoice
+        bookingData={roomsData}
+        roomId={roomId}
+        isVisible={showModal}
+        onClose={() => setShowModal(false)}
+      ></Invoice>
     </div>
   );
 };
